@@ -1,2 +1,2 @@
 # SI-Pemesanan-Kue
-Sistem Informasi Pemesanan Ku
+Sistem Informasi Pemesanan Kue

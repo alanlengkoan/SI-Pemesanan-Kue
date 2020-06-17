@@ -1,0 +1,40 @@
+<?php
+// Validasi supaya yang mengakses hanya Admin (yang sudah login)
+include_once "../../library/inc.sesadmin.php";
+?>
+<table width="800" border="0" cellpadding="2" cellspacing="1" class="table-border">
+  <tr>
+    <td colspan="2" align="right"><h1><font color="#FF0066">DATA KATEGORI</font></h1></td>
+  </tr>
+  <tr>
+    <td colspan="2">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="2" align="right"><a href="?open=Kategori-Add" target="_self"><img src="../assets/images/btn_add_data.png" border="0" /></a></td>
+  </tr>
+  
+  <tr>
+    <td colspan="2">
+	<table class="table-list" width="100%" border="0" cellspacing="1" cellpadding="2">
+      <tr>
+        <th width="35" align="center" bgcolor="#CCCCCC"><font color="#FF0066">No</font></th>
+        <th width="650" bgcolor="#CCCCCC"><font color="#FF0066">Nama Kategori</font></th>
+        <td colspan="2" align="center" bgcolor="#CCCCCC"><font color="#FF0066"><strong>Tools</strong></font></td>
+      </tr>
+	<?php
+	$mySql = "SELECT * FROM kategori ORDER BY nm_kategori ASC";
+	$myQry = mysqli_query($mysqli, $mySql)  or die ("Query salah : ".mysqli_error($mysqli));
+	$nomor = 0;
+	while ($myData = mysqli_fetch_array($myQry)) {
+		$Kode = $myData['kd_kategori'];
+	?>
+      <tr>
+        <td align="center"><?php echo $nomor++; ?></td>
+        <td><?php echo $myData['nm_kategori']; ?></td>
+        <td width="50" align="center"><a href="?open=Kategori-Edit&Kode=<?php echo $Kode; ?>" target="_self" alt="Edit Data"><img src="../assets/images/b_edit.png" style="width: 30px; height: 30px;"></a></td>
+        <td width="50" align="center"><a href="?open=Kategori-Delete&Kode=<?php echo $Kode; ?>" target="_self" alt="Delete Data" onclick="return confirm('ANDA YAKIN INGIN MENGHAPUS DATA KATEGORI INI ... ?')"><img src="../assets/images/b_drop.png" style="width: 30px; height: 30px;"></a></td>
+      </tr>
+      <?php } ?>
+    </table></td>
+  </tr>
+</table>

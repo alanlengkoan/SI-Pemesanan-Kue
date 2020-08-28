@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0.1
+-- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Waktu pembuatan: 16 Des 2019 pada 15.59
--- Versi server: 10.1.32-MariaDB
--- Versi PHP: 5.6.36
+-- Host: localhost:3306
+-- Generation Time: 28 Agu 2020 pada 12.49
+-- Versi Server: 10.1.44-MariaDB-0ubuntu0.18.04.1
+-- PHP Version: 7.2.24-0ubuntu0.18.04.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -64,7 +62,7 @@ CREATE TABLE `barang` (
 
 INSERT INTO `barang` (`kd_barang`, `nm_barang`, `harga_jual`, `harga_retail`, `stok`, `keterangan`, `file_gambar`, `kd_kategori`) VALUES
 ('B0002', 'Katirisala / Loyang', 60000, 40000, 1000, '<h4><strong>Terbuat dari ketan hitam dan gula merah</strong></h4>', 'B0002.katirisala.png', 'K001'),
-('B0001', 'Barongko / Box', 60000, 40000, 999, '<h4>Terbuat dari pisang dan dibungkus dengan daun pisang</h4>', 'B0001.barongko.png', 'K001'),
+('B0001', 'Barongko / Box', 60000, 40000, 997, '<h4>Terbuat dari pisang dan dibungkus dengan daun pisang</h4>', 'B0001.barongko.png', 'K001'),
 ('B0003', 'Mandapa / Loyang', 50000, 30000, 1000, '<h4><strong>Kue Mandapa favorite everyone. Tersedia juga&nbsp; dalam kemasan mini&nbsp;</strong></h4>', 'B0003.mandapa.png', 'K001'),
 ('B0004', 'Sikaporo / Loyang ', 45000, 25000, 1000, '<h4><strong>Terbuat dari telur bebek. ciri khasnya dibawah berwarna hijau dan diatas berwarna kuning.</strong></h4>', 'B0004.sikaporo.png', 'K001'),
 ('B0005', 'Pisang Balanda / Box', 50000, 30000, 1000, '<h4><strong>Terbuat dari bahan dasar pisang khusus yaitu pisang raja yang dibalur dengan kocokan telur lalu digoreng kemudian diisi kacang tanah, gula pasir dan mentega.</strong></h4>', 'B0005.pisang balana.png', 'K001'),
@@ -430,6 +428,13 @@ CREATE TABLE `tmp_keranjang` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data untuk tabel `tmp_keranjang`
+--
+
+INSERT INTO `tmp_keranjang` (`id`, `kd_barang`, `harga`, `jumlah`, `tanggal`, `kd_pelanggan`) VALUES
+(45, 'B0001', 60000, 2, '2020-08-28', 'P00001');
+
+--
 -- Trigger `tmp_keranjang`
 --
 DELIMITER $$
@@ -456,144 +461,135 @@ CREATE TABLE `total_bayar` (
 --
 
 --
--- Indeks untuk tabel `admin`
+-- Indexes for table `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `barang`
+-- Indexes for table `barang`
 --
 ALTER TABLE `barang`
   ADD PRIMARY KEY (`kd_barang`);
 
 --
--- Indeks untuk tabel `kategori`
+-- Indexes for table `kategori`
 --
 ALTER TABLE `kategori`
   ADD PRIMARY KEY (`kd_kategori`);
 
 --
--- Indeks untuk tabel `pelanggan`
+-- Indexes for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
   ADD PRIMARY KEY (`kd_pelanggan`);
 
 --
--- Indeks untuk tabel `pemesanan`
+-- Indexes for table `pemesanan`
 --
 ALTER TABLE `pemesanan`
   ADD PRIMARY KEY (`no_pemesanan`);
 
 --
--- Indeks untuk tabel `pemesanan_item`
+-- Indexes for table `pemesanan_item`
 --
 ALTER TABLE `pemesanan_item`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `provinsi`
+-- Indexes for table `provinsi`
 --
 ALTER TABLE `provinsi`
   ADD PRIMARY KEY (`kd_provinsi`);
 
 --
--- Indeks untuk tabel `tb_kurir`
+-- Indexes for table `tb_kurir`
 --
 ALTER TABLE `tb_kurir`
   ADD PRIMARY KEY (`id_kurir`);
 
 --
--- Indeks untuk tabel `tb_retail`
+-- Indexes for table `tb_retail`
 --
 ALTER TABLE `tb_retail`
   ADD PRIMARY KEY (`id_retail`),
   ADD UNIQUE KEY `username` (`username`);
 
 --
--- Indeks untuk tabel `tb_retail_pemesanan`
+-- Indexes for table `tb_retail_pemesanan`
 --
 ALTER TABLE `tb_retail_pemesanan`
   ADD PRIMARY KEY (`id_pemesanan_retail`);
 
 --
--- Indeks untuk tabel `tb_retail_pesanan`
+-- Indexes for table `tb_retail_pesanan`
 --
 ALTER TABLE `tb_retail_pesanan`
   ADD PRIMARY KEY (`id_retail_pemesanan`);
 
 --
--- Indeks untuk tabel `tb_retail_transaksi`
+-- Indexes for table `tb_retail_transaksi`
 --
 ALTER TABLE `tb_retail_transaksi`
   ADD PRIMARY KEY (`id_retail_transaksi`);
 
 --
--- Indeks untuk tabel `tmp_keranjang`
+-- Indexes for table `tmp_keranjang`
 --
 ALTER TABLE `tmp_keranjang`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `total_bayar`
+-- Indexes for table `total_bayar`
 --
 ALTER TABLE `total_bayar`
   ADD PRIMARY KEY (`id_total_bayar`),
   ADD UNIQUE KEY `kd_pelanggan` (`kd_pelanggan`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `admin`
+-- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
   MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
--- AUTO_INCREMENT untuk tabel `pemesanan_item`
+-- AUTO_INCREMENT for table `pemesanan_item`
 --
 ALTER TABLE `pemesanan_item`
   MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
 --
--- AUTO_INCREMENT untuk tabel `tb_kurir`
+-- AUTO_INCREMENT for table `tb_kurir`
 --
 ALTER TABLE `tb_kurir`
   MODIFY `id_kurir` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
--- AUTO_INCREMENT untuk tabel `tb_retail_pemesanan`
+-- AUTO_INCREMENT for table `tb_retail_pemesanan`
 --
 ALTER TABLE `tb_retail_pemesanan`
   MODIFY `id_pemesanan_retail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
 --
--- AUTO_INCREMENT untuk tabel `tb_retail_pesanan`
+-- AUTO_INCREMENT for table `tb_retail_pesanan`
 --
 ALTER TABLE `tb_retail_pesanan`
   MODIFY `id_retail_pemesanan` int(11) NOT NULL AUTO_INCREMENT;
-
 --
--- AUTO_INCREMENT untuk tabel `tb_retail_transaksi`
+-- AUTO_INCREMENT for table `tb_retail_transaksi`
 --
 ALTER TABLE `tb_retail_transaksi`
   MODIFY `id_retail_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
 --
--- AUTO_INCREMENT untuk tabel `tmp_keranjang`
+-- AUTO_INCREMENT for table `tmp_keranjang`
 --
 ALTER TABLE `tmp_keranjang`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
-
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 --
--- AUTO_INCREMENT untuk tabel `total_bayar`
+-- AUTO_INCREMENT for table `total_bayar`
 --
 ALTER TABLE `total_bayar`
   MODIFY `id_total_bayar` int(11) NOT NULL AUTO_INCREMENT;
-COMMIT;
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

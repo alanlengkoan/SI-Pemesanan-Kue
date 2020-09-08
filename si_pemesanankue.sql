@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: 28 Agu 2020 pada 12.49
+-- Generation Time: 08 Sep 2020 pada 19.51
 -- Versi Server: 10.1.44-MariaDB-0ubuntu0.18.04.1
 -- PHP Version: 7.2.24-0ubuntu0.18.04.6
 
@@ -62,7 +62,7 @@ CREATE TABLE `barang` (
 
 INSERT INTO `barang` (`kd_barang`, `nm_barang`, `harga_jual`, `harga_retail`, `stok`, `keterangan`, `file_gambar`, `kd_kategori`) VALUES
 ('B0002', 'Katirisala / Loyang', 60000, 40000, 1000, '<h4><strong>Terbuat dari ketan hitam dan gula merah</strong></h4>', 'B0002.katirisala.png', 'K001'),
-('B0001', 'Barongko / Box', 60000, 40000, 997, '<h4>Terbuat dari pisang dan dibungkus dengan daun pisang</h4>', 'B0001.barongko.png', 'K001'),
+('B0001', 'Barongko / Box', 60000, 40000, 993, '<h4>Terbuat dari pisang dan dibungkus dengan daun pisang</h4>', 'B0001.barongko.png', 'K001'),
 ('B0003', 'Mandapa / Loyang', 50000, 30000, 1000, '<h4><strong>Kue Mandapa favorite everyone. Tersedia juga&nbsp; dalam kemasan mini&nbsp;</strong></h4>', 'B0003.mandapa.png', 'K001'),
 ('B0004', 'Sikaporo / Loyang ', 45000, 25000, 1000, '<h4><strong>Terbuat dari telur bebek. ciri khasnya dibawah berwarna hijau dan diatas berwarna kuning.</strong></h4>', 'B0004.sikaporo.png', 'K001'),
 ('B0005', 'Pisang Balanda / Box', 50000, 30000, 1000, '<h4><strong>Terbuat dari bahan dasar pisang khusus yaitu pisang raja yang dibalur dengan kocokan telur lalu digoreng kemudian diisi kacang tanah, gula pasir dan mentega.</strong></h4>', 'B0005.pisang balana.png', 'K001'),
@@ -428,13 +428,6 @@ CREATE TABLE `tmp_keranjang` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tmp_keranjang`
---
-
-INSERT INTO `tmp_keranjang` (`id`, `kd_barang`, `harga`, `jumlah`, `tanggal`, `kd_pelanggan`) VALUES
-(45, 'B0001', 60000, 2, '2020-08-28', 'P00001');
-
---
 -- Trigger `tmp_keranjang`
 --
 DELIMITER $$
@@ -584,7 +577,7 @@ ALTER TABLE `tb_retail_transaksi`
 -- AUTO_INCREMENT for table `tmp_keranjang`
 --
 ALTER TABLE `tmp_keranjang`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 --
 -- AUTO_INCREMENT for table `total_bayar`
 --
